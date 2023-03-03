@@ -1,16 +1,30 @@
 package br.unitins.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Caneta extends PanacheEntity {
+public class Caneta {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 60)
     private String marca;
+
+    @Column(nullable = false)
     private String cor;
+
     private Double ponta;
+
+    @Column(nullable = false)
     private String fornecedor;
+
+    @Column(length = 120)
     private String descricao;
 
     public String getMarca() {
@@ -42,6 +56,9 @@ public class Caneta extends PanacheEntity {
     }
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+    public static Caneta findById(Long id2) {
+        return null;
     }
     
     
